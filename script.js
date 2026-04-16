@@ -1,4 +1,4 @@
-// CONFIGURAÇÃO FIREBASE
+// CONFIGURAÇÃO FIREBASE CORRIGIDA
 const firebaseConfig = {
     apiKey: "AIzaSyBdPMuVdJ7L0lyX_pEfVSDLOWeyiUb3rQ8",
     authDomain: "://firebaseapp.com",
@@ -11,6 +11,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
+
 
 // VARIÁVEIS GLOBAIS
 let limiteGlobal = 1000;
