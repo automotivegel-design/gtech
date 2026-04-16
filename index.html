@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GTEC - Controle de Gastos</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Link para o Manifesto do App -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
+    <link rel="apple-touch-icon" href="img/logo.png">
+</head>
+<body>
+
+<header class="topo">
+    <div class="topo-container">
+        <div id="btnVoltar" class="btn-voltar" onclick="voltarTela()" style="display:none; color:#ff3b30;">VOLTAR</div>
+        <img src="img/logo.png" class="logo-topo" onclick="irParaHome()">
+        <div class="user-badge-tecnico">
+            <div id="displayID">ID: 000000</div>
+            <div id="displayUser">USER: AGUARDANDO</div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section id="paginaHome">
+        <h2 id="valSaldo">R$ 0,00</h2>
+        
+        <div class="container-menu">
+            <div class="card-menu" onclick="mostrarTela('paginaLancamento')">LANÇAR GASTO</div>
+            <div class="card-menu" onclick="configurarLimite()">AJUSTAR LIMITE</div>
+            <div class="card-menu" onclick="mostrarTela('paginaFixos')">CUSTOS RECORRENTES</div>
+            <div class="card-menu" onclick="encerrarCiclo()">ENCERRAR CICLO</div>
+            <div class="card-menu" onclick="mostrarTela('paginaRelatorios')">CICLOS ANTERIORES</div>
+        </div>
+
+        <div class="card-status">
+            <div class="sessao-titulo" style="margin-top: 0; margin-bottom: 10px; color: #444;">STATUS DO MÊS</div>
+            <div style="font-size: 10px; font-weight: 800; display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span id="labelGasto" style="color: #888;">GASTO: R$ 0,00</span>
+                <span id="labelLimite" style="color: #888;">LIMITE: R$ 0,00</span>
+            </div>
+            <div style="width: 100%; height: 4px; background: #111; border-radius: 10px; overflow: hidden; border: 0.5px solid #222;">
+                <div id="barraProgresso" style="width: 0%; height: 100%; background: #ffffff; transition: 0.5s;"></div>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <div class="sessao-titulo">HISTÓRICO</div>
+            <ul id="listaGastos"></ul>
+        </div>
+    </section>
+
+    <section id="paginaLancamento" style="display:none;">
+        <h2>NOVO LANÇAMENTO</h2>
+        <div class="container-form">
+            <span class="titulo-ficha">Descrição do Gasto</span>
+            <input type="text" id="descGasto" placeholder="Ex: Mercado">
+            <span class="titulo-ficha">Valor (R$)</span>
+            <input type="number" id="valorGasto" placeholder="0.00" inputmode="decimal">
+            <button onclick="adicionarGasto()" style="margin-top:20px;">CONFIRMAR GASTO</button>
+        </div>
+    </section>
+
+    <section id="paginaFixos" style="display:none;">
+        <h2>CUSTOS RECORRENTES</h2>
+        <div class="container-form">
+            <input type="text" id="descFixo" placeholder="Descrição (Ex: Internet)">
+            <input type="number" id="valorFixo" placeholder="Valor R$ 0.00" inputmode="decimal">
+            <button onclick="adicionarFixo()">SALVAR CUSTO FIXO</button>
+        </div>
+        <div style="margin-top: 20px;">
+            <div class="sessao-titulo">LISTA DE FIXOS</div>
+            <ul id="listaFixos"></ul>
+        </div>
+    </section>
+
+    <section id="paginaRelatorios" style="display:none;">
+        <h2>CICLOS ANTERIORES</h2>
+        <ul id="listaRelatorios"></ul>
+    </section>
+</main>
+
+<footer class="rodape-fixo"><span>by</span> <strong>Gel Racing</strong></footer>
+
+<!-- Chamada das Bibliotecas Firebase -->
+<script src="https://gstatic.com"></script>
+<script src="https://gstatic.com"></script>
+<script src="script.js"></script>
+</body>
+</html>
