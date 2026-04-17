@@ -90,18 +90,26 @@ function excluirGasto(id) {
 }
 
 function configurarLimite() {
-    const novo = prompt("Qual o novo valor limite?", limiteGlobal);
-    if (novo) {
-        db.ref('limiteGlobal').set(parseFloat(novo));
+    // Usamos window.limiteGlobal para garantir que pegamos a variável correta da memória
+    const valorAtual = window.limiteGlobal || 1000;
+    const novo = prompt("Qual o novo valor limite?", valorAtual);
+    
+    if (novo !== null && !isNaN(parseFloat(novo))) {
+        const novoValor = parseFloat(novo);
+        
+        // Salva no Firebase (isso vai atualizar os dois celulares na hora)
+        db.ref('limiteGlobal').set(novoValor);
         
         const alerta = prompt("Com quantos % de uso deseja que a barra fique vermelha?", percentualAlerta);
-        if (alerta) {
+        if (alerta !== null && !isNaN(parseFloat(alerta))) {
             percentualAlerta = parseFloat(alerta);
             localStorage.setItem("percentualAlerta", percentualAlerta);
-            atualizarDashboard();
         }
+        
+        alert("Limite atualizado com sucesso!");
     }
 }
+
 
 function renderizarHistorico() {
     const ul = document.getElementById("listaGastos");
