@@ -14,7 +14,7 @@ const db = firebase.database();
 
 
 // VARIÁVEIS GLOBAIS
-let limiteGlobal = 1000;
+window.limiteGlobal = 1000;
 let gastosRealizados = [];
 let custosFixos = [];
 let ciclosEncerrados = [];
@@ -90,14 +90,14 @@ function excluirGasto(id) {
 }
 
 function configurarLimite() {
-    // Usamos window.limiteGlobal para garantir que pegamos a variável correta da memória
+    // Usamos window.limiteGlobal para garantir que o sistema ache o valor
     const valorAtual = window.limiteGlobal || 1000;
     const novo = prompt("Qual o novo valor limite?", valorAtual);
     
     if (novo !== null && !isNaN(parseFloat(novo))) {
         const novoValor = parseFloat(novo);
         
-        // Salva no Firebase (isso vai atualizar os dois celulares na hora)
+        // Salva no Firebase (Sincroniza os dois celulares)
         db.ref('limiteGlobal').set(novoValor);
         
         const alerta = prompt("Com quantos % de uso deseja que a barra fique vermelha?", percentualAlerta);
@@ -109,6 +109,7 @@ function configurarLimite() {
         alert("Limite atualizado com sucesso!");
     }
 }
+
 
 
 function renderizarHistorico() {
