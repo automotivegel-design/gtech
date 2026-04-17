@@ -1,4 +1,5 @@
 // CONFIGURAÇÃO FIREBASE CORRIGIDA
+// O topo do script.js deve ser EXATAMENTE este:
 const firebaseConfig = {
     apiKey: "AIzaSyBdPMuVdJ7L0lyX_pEfVSDLOWeyiUb3rQ8",
     authDomain: "://firebaseapp.com",
@@ -9,12 +10,17 @@ const firebaseConfig = {
     appId: "1:22350153282:web:bf66c5a51265f54cdbcfdb"
 };
 
-firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
+// Inicializa o Firebase APENAS se a biblioteca foi carregada
+if (typeof firebase !== 'undefined') {
+    firebase.initializeApp(firebaseConfig);
+    window.db = firebase.database();
+} else {
+    console.error("Erro: O motor do Firebase não foi carregado pelo index.html");
+}
 
-
-// VARIÁVEIS GLOBAIS
 window.limiteGlobal = 1000;
+// ... resto do seu código ...
+
 let gastosRealizados = [];
 let custosFixos = [];
 let ciclosEncerrados = [];
