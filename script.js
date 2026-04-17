@@ -11,6 +11,10 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
+db.ref('teste').set({
+    ok: true,
+    hora: new Date().toString()
+});
 
 // VARIÁVEIS GLOBAIS
 let limiteGlobal = 1000;
