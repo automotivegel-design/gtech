@@ -1,13 +1,18 @@
 // 1. CONFIGURAÇÃO (Sempre no topo)
+// CONFIGURAÇÃO GTEC - VERSÃO COMPATÍVEL
 const firebaseConfig = {
-    apiKey: "AIzaSyBdPMuVdJ7L0lyX_pEfVSDLOWeyiUb3rQ8",
-    authDomain: "://firebaseapp.com",
-    databaseURL: "https://firebaseio.com", // CONFIRA CADA LETRA AQUI
-    projectId: "gtec-gastos",
-    storageBucket: "gtec-gastos.firebasestorage.app",
-    messagingSenderId: "22350153282",
-    appId: "1:22350153282:web:bf66c5a51265f54cdbcfdb"
+  apiKey: "AIzaSyBdPMuVdJ7L0lyX_pEfVSDLOWeyiUb3rQ8",
+  authDomain: "gtec-gastos.firebaseapp.com",
+  databaseURL: "https://gtec-gastos-default-rtdb.firebaseio.com",
+  projectId: "gtec-gastos",
+  storageBucket: "gtec-gastos.firebasestorage.app",
+  messagingSenderId: "22350153282",
+  appId: "1:22350153282:web:bf66c5a51265f54cdbcfdb"
 };
+
+// Inicialização Correta para Web
+firebase.initializeApp(firebaseConfig);
+var db = firebase.database();
 
 
 // 2. DECLARAÇÃO DE VARIÁVEIS (Para evitar erro de "initialization")
