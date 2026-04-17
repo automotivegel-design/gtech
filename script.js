@@ -2,7 +2,7 @@
 const firebaseConfig = {
     apiKey: "AIzaSyBdPMuVdJ7L0lyX_pEfVSDLOWeyiUb3rQ8",
     authDomain: "://firebaseapp.com",
-    databaseURL: "https://firebaseio.com",
+    databaseURL: "https://firebaseio.com", // CONFIRA CADA LETRA AQUI
     projectId: "gtec-gastos",
     storageBucket: "gtec-gastos.firebasestorage.app",
     messagingSenderId: "22350153282",
