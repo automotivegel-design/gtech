@@ -12,7 +12,12 @@ const firebaseConfig = {
 
 // Inicialização Correta para Web
 firebase.initializeApp(firebaseConfig);
-var db = firebase.database();
+// Forçamos o Firebase a usar a URL exata do seu projeto
+var db = firebase.database().ref(); 
+
+// Teste de gravação imediata assim que o app abre
+db.update({ "statusConexao": "ATIVO - " + new Date().toLocaleString() });
+
 
 
 // 2. DECLARAÇÃO DE VARIÁVEIS (Para evitar erro de "initialization")
