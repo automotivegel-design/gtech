@@ -1,8 +1,8 @@
 // CONFIGURAÇÃO FIREBASE
 const firebaseConfig = {
     apiKey: "AIzaSyBdPMuVdJ7L0lyX_pEfVSDLOWeyiUb3rQ8",
-    authDomain: "SEU-PROJETO.firebaseapp.com",
-    databaseURL: "https://SEU-PROJETO-default-rtdb.firebaseio.com/",
+    authDomain: "gtec-gastos.firebaseapp.com",
+    databaseURL: "https://gtec-gastos-default-rtdb.firebaseio.com/",
     projectId: "gtec-gastos",
     storageBucket: "gtec-gastos.firebasestorage.app",
     messagingSenderId: "22350153282",
@@ -12,10 +12,9 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 db.ref('teste').set({
-    ok: true,
-    hora: new Date().toString()
+    funcionando: true,
+    data: new Date().toString()
 });
-
 // VARIÁVEIS GLOBAIS
 let limiteGlobal = 1000;
 let gastosRealizados = [];
