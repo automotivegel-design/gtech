@@ -93,7 +93,18 @@ input[type="number"]:focus {
 .sessao-titulo { font-size: 9px; color: #444; font-weight: 800; letter-spacing: 2px; margin: 20px 0 10px; text-transform: uppercase; }
 ul { list-style: none; padding: 0; }
 li { padding: 15px 5px; border-bottom: 1px solid #111; display: flex; justify-content: space-between; font-size: 13px; }
-.rodape-fixo { position: fixed; bottom: 0; width: 100%; text-align: center; padding: 15px; background: #000; font-size: 9px; border-top: 1px solid #111; }
+.rodape-fixo {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 15px 0;
+    background: #000;
+    font-size: 9px;
+    border-top: 1px solid #111;
+}
 
 /* Moldura do Status: Preta com borda vermelha fina */
 .card-status {
