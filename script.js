@@ -9,6 +9,7 @@ const firebaseConfig = {
     appId: "1:22350153282:web:bf66c5a51265f54cdbcfdb"
 };
 
+
 // 2. DECLARAÇÃO DE VARIÁVEIS (Para evitar erro de "initialization")
 var db;
 var limiteGlobal = 1000;
