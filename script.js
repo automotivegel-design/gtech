@@ -1,3 +1,4 @@
+let ultimoGastoNotificado = localStorage.getItem("ultimoGastoNotificado") || 0;
 // CONFIGURAÇÃO FIREBASE
 const firebaseConfig = {
     apiKey: "AIzaSyBdPMuVdJ7L0lyX_pEfVSDLOWeyiUb3rQ8",
@@ -37,6 +38,20 @@ db.ref('/').on('value', (snapshot) => {
         atualizarDashboard();
         if (document.getElementById("paginaFixos").style.display === "block") renderizarFixos();
         if (document.getElementById("paginaRelatorios").style.display === "block") renderizarRelatorios();
+if (gastosRealizados.length > 0) {
+    const ultimo = gastosRealizados[0];
+
+    if (ultimo.id > ultimoGastoNotificado && ultimo.quem !== meuNome.toUpperCase()) {
+        
+        // 🔔 ALERTA
+        alert(`NOVO GASTO!\n${ultimo.desc}\nR$ ${ultimo.valor.toFixed(2)}\nPOR: ${ultimo.quem}`);
+
+        // 🔊 SOM (opcional)
+        const audio = new Audio("https://actions.google.com/sounds/v1/alarms/beep_short.ogg");
+        audio.play();
+
+        ultimoGastoNotificado = ultimo.id;
+        localStorage.setItem("ultimoGastoNotificado", ultimo.id);
     }
 });
 
